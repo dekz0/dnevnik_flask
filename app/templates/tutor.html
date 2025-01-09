@@ -1,0 +1,334 @@
+<html>
+
+<head>
+    <title>ДНЕВНИК ШКОЛЬНИКА - Онлайн-репетитор</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        /* Базовые стили остаются теми же */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .header img {
+            height: 50px;
+        }
+
+        .header .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .icons i {
+            margin-left: 15px;
+            font-size: 20px;
+        }
+
+        .header .login {
+            font-size: 14px;
+        }
+
+        .nav {
+            background-color: #3366cc;
+            padding: 10px 0;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .sub-nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .sub-nav a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .sub-nav a.red {
+            color: red;
+        }
+
+        /* Новые стили для страницы репетитора */
+        .tutor-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .subject-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background: white;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #3366cc;
+        }
+
+        .subject-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .subject-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .video-container {
+            display: none;
+            padding: 20px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-preview {
+            width: 100%;
+            height: 180px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .video-description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .back-button {
+            background-color: #666;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <a href="{{ url_for('index') }}">
+            <img alt="Логотип Кунделик" height="50" src="{{ url_for('static', filename='images/Рисунок2.png') }}" width="100" />
+        </a>
+        <div class="icons">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-globe"></i>
+        </div>
+        <div class="login">
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Вход / регистрация</a>
+            {% else %}
+            <a href="{{ url_for('user', username=current_user.username) }}">{{ current_user.username }}</a> |
+            <a href="{{ url_for('logout') }}">Выйти</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Навигация -->
+    <div class="nav">
+        <a href="#">ОБРАЗОВАНИЕ</a>
+        <a href="#">ОБЩЕНИЕ</a>
+        <a href="#">ПРИЛОЖЕНИЯ</a>
+    </div>
+    <div class="sub-nav">
+        <a href="#">Моя школа</a>
+        <a href="#">Мой класс</a>
+        <a href="#">Дневник</a>
+        <a href="#">Расписание</a>
+        <a href="#">Домашнее задание</a>
+        <a href="#">Чаты</a>
+        <a class="red" href="{{ url_for('protected_route', page='library') }}">Онлайн –Библиотека</a>
+        <a class="red" href="{{ url_for('protected_route', page='tutor') }}">Онлайн-репетитор</a>
+        <a class="red" href="{{ url_for('protected_route', page='leto') }}">Прочитать летом</a>
+    </div>
+
+    <!-- Контент репетитора -->
+    <div class="tutor-content">
+        <button id="backButton" class="back-button">
+            <i class="fas fa-arrow-left"></i> Назад к предметам
+        </button>
+
+        <div id="subjectsGrid" class="subjects-grid">
+            <div class="subject-card" onclick="showVideos('math')">
+                <div class="subject-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="subject-title">Математика</div>
+                <div class="subject-description">Алгебра, геометрия, тригонометрия</div>
+            </div>
+
+            <div class="subject-card" onclick="showVideos('physics')">
+                <div class="subject-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <div class="subject-title">Физика</div>
+                <div class="subject-description">Механика, электричество, оптика</div>
+            </div>
+
+            <div class="subject-card" onclick="showVideos('chemistry')">
+                <div class="subject-icon">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <div class="subject-title">Химия</div>
+                <div class="subject-description">Неорганическая и органическая химия</div>
+            </div>
+
+            <div class="subject-card" onclick="showVideos('biology')">
+                <div class="subject-icon">
+                    <i class="fas fa-dna"></i>
+                </div>
+                <div class="subject-title">Биология</div>
+                <div class="subject-description">Ботаника, зоология, анатомия</div>
+            </div>
+        </div>
+
+        <!-- Контейнеры с видео для каждого предмета -->
+        <div id="mathVideos" class="video-container">
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-preview">
+                        <iframe width="100%" height="180" src="https://www.youtube.com/embed/B2wP207eriY" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Квадратные уравнения</div>
+                        <div class="video-description">Методы решения квадратных уравнений</div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-preview">
+                        <iframe width="100%" height="180" src="https://www.youtube.com/embed/AS24cb8Myw0" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Теорема Пифагора</div>
+                        <div class="video-description">Применение теоремы Пифагора</div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-preview">
+                        <iframe width="100%" height="180" src="https://www.youtube.com/embed/SxLracv5qAg" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Тригонометрия</div>
+                        <div class="video-description">Основы тригонометрии</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Добавьте аналогичные контейнеры для других предметов -->
+    </div>
+
+    <script>
+        function showVideos(subject) {
+            // Скрываем сетку предметов
+            document.getElementById('subjectsGrid').style.display = 'none';
+
+            // Показываем кнопку "Назад"
+            document.getElementById('backButton').style.display = 'inline-block';
+
+            // Скрываем все контейнеры с видео
+            const videoContainers = document.querySelectorAll('.video-container');
+            videoContainers.forEach(container => container.style.display = 'none');
+
+            // Показываем контейнер с видео для выбранного предмета
+            document.getElementById(subject + 'Videos').style.display = 'block';
+        }
+
+        // Обработчик для кнопки "Назад"
+        document.getElementById('backButton').addEventListener('click', function () {
+            // Показываем сетку предметов
+            document.getElementById('subjectsGrid').style.display = 'grid';
+
+            // Скрываем кнопку "Назад"
+            this.style.display = 'none';
+
+            // Скрываем все контейнеры с видео
+            const videoContainers = document.querySelectorAll('.video-container');
+            videoContainers.forEach(container => container.style.display = 'none');
+        });
+    </script>
+</body>
+
+</html>

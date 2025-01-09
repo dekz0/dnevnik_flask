@@ -1,0 +1,206 @@
+<html>
+
+<head>
+    <title>ДНЕВНИК ШКОЛЬНИКА - Библиотека</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        /* Сохраняем все базовые стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .button:hover {
+            background: #f0f0f0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .header img {
+            height: 50px;
+        }
+
+        .header .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .icons i {
+            margin-left: 15px;
+            font-size: 20px;
+        }
+
+        .header .login {
+            font-size: 14px;
+        }
+
+        .nav {
+            background-color: #3366cc;
+            padding: 10px 0;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .sub-nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .sub-nav a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .sub-nav a.red {
+            color: red;
+        }
+
+        /* Добавляем новые стили для библиотеки */
+        .library-content {
+            text-align: center;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .library-content h1 {
+            color: #333;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .class-selection h2 {
+            color: #333;
+            font-size: 20px;
+            margin: 15px 0;
+        }
+
+        .class-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .class-buttons button {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .class-buttons button:hover {
+            background: #f0f0f0;
+        }
+
+        .class-buttons button.active {
+            background: #3366cc;
+            color: white;
+            border-color: #3366cc;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header .icons {
+                margin-top: 10px;
+            }
+
+            .nav a,
+            .sub-nav a {
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Сохраняем header -->
+    <div class="header">
+        <a href="{{ url_for('index') }}">
+            <img alt="Логотип Кунделик" height="50" src="{{ url_for('static', filename='images/Рисунок2.png') }}" width="100" />
+        </a>
+
+        <div class="icons">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-globe"></i>
+        </div>
+        <div class="login">
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Вход / регистрация</a>
+            {% else %}
+            <a href="{{ url_for('user', username=current_user.username) }}">{{ current_user.username }}</a> |
+            <a href="{{ url_for('logout') }}">Выйти</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Сохраняем навигацию -->
+    <div class="nav">
+        <a href="#">ОБРАЗОВАНИЕ</a>
+        <a href="#">ОБЩЕНИЕ</a>
+        <a href="#">ПРИЛОЖЕНИЯ</a>
+    </div>
+    <div class="sub-nav">
+        <a href="#">Моя школа</a>
+        <a href="#">Мой класс</a>
+        <a href="#">Дневник</a>
+        <a href="#">Расписание</a>
+        <a href="#">Домашнее задание</a>
+        <a href="#">Чаты</a>
+        <a class="red" href="{{ url_for('protected_route', page='library') }}">Онлайн –Библиотека</a>
+        <a class="red" href="{{ url_for('protected_route', page='tutor') }}">Онлайн-репетитор</a>
+        <a class="red" href="{{ url_for('protected_route', page='leto') }}">Прочитать летом</a>
+    </div>
+
+    <!-- Добавляем контент библиотеки -->
+    <div class="library-content">
+        <h1>Библиотека поможет найти художественное произведение</h1>
+        <hr />
+        <div class="class-selection">
+            <h2>Выбери класс</h2>
+            <div class="class-buttons">
+                {% for class_num in range(5, 12) %}
+                <a href="{{ url_for('library_class', class_num=class_num) }}" class="button">
+                    {{ class_num }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

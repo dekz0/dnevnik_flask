@@ -1,0 +1,139 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e2e6f6;
+    color: #090f00;
+}
+.background-container {
+    position: relative; /* Для позиционирования текста внутри */
+    width: 100%;
+    height: 100vh; /* Высота окна */
+    background-image: url('/i.webp');
+    background-size: cover; /* Масштабирование рисунка */
+    background-position: center; /* Центрируем фон */
+    background-repeat: no-repeat; /* Убираем повторение */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    object-fit: contain; /* Масштабировать изображение, сохраняя пропорции */
+    margin: 0;
+    padding: 0;
+    
+}
+
+.content {
+    background-color: rgba(255, 255, 255, 0.8); /* Белый фон с прозрачностью */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+img {
+    width: 15%;
+    object-fit: contain; /* Сохраняем пропорции изображения */
+    margin-top: 0; 
+    margin: auto;
+    position: absolute; 
+    z-index: 1;
+    display: block;
+}  
+
+h1 {
+    background: linear-gradient(to top, rgb(15, 9, 200), 20%,rgb(9, 245, 245));
+    color: rgb(230, 226, 10);
+    text-align: center;
+    margin: 2%; 
+    display: block;
+    position: relative; 
+}
+h3 {
+    background: linear-gradient(to top, rgb(13, 5, 226), 20%, rgb(196, 9, 202));
+    color: rgb(34, 236, 16);
+    text-align: center;
+    margin: 2%; 
+    display: block;
+    position: relative; 
+}
+ /* Сделать текст кнопки "6" красным */
+ #class-6 {
+    color: red; /* Текст красный */
+}
+
+.header {
+    background-color: #6b77e5;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.sub-header {
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #6b77e5;
+}
+
+.class-selection {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.class-buttons button {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.class-buttons button:hover {
+    background-color: #005bb5;
+}
+
+#class-6-header,
+#class-6-books {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.book-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.book-list li {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #f00626;
+}
+
+.show {
+    display: block; /* Показать элемент при необходимости */
+}
+
+#show-list {
+    display: inline-block; /* Чтобы кнопка соответствовала длине текста */
+    padding: 5px 10px; /* Отступы вокруг текста */
+    font-size: 14px; /* Уменьшаем размер шрифта */
+    color: white; /* Белый текст */
+    background-color: #0073e6; /* Синий фон */
+    border: none; /* Убираем рамку */
+    border-radius: 5px; /* Скругляем края */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+#show-list:hover {
+    background-color: #005bb5; /* Тёмно-синий фон при наведении */
+}

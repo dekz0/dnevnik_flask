@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+  
+h1 {
+	color: #0000FF;
+	text-align: right;
+    margin: 2%; 
+    display: block;
+    position: Relative; 
+    text-align:center;
+  }
+
+  img {
+	width: 20%;
+    height:100%;
+    margin: auto; 
+    position: absolute; 
+    display: block;
+} 
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+header img {
+    height: 100px;
+}
+.btn {
+    background: #b5bdc8;
+    background: linear-gradient(to top, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+    font-size: 16px; /* Размер шрифта */
+    padding: 10px 20px; /* Поля вокруг текста */
+    color: #fff; /* Цвет текста */
+    border: 1px solid #333; /* Параметры рамки */
+    border-radius: 20px; /* Радиус скругления */
+   }
+   
+header .icons {
+    display: flex;
+    gap: 10px;
+}
+header .icons span {
+    font-size: 20px;
+    cursor: pointer;
+}
+nav {
+    background: linear-gradient(to top, rgb(15, 9, 200), 20%, cyan);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+.subnav {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+.subnav a {
+    background: linear-gradient(to top, rgb(8, 248, 16), 20%, rgb(235, 194, 228));
+    color: #000;
+    text-decoration: none;
+    margin: 0 1px;
+}
+.subnav a:hover {
+    color: #460afad6;
+}
+.subnav a.red {
+    color: red;
+}
+.quote {
+    position: relative; /* Обычное позиционирование, чтобы быть под subnav */
+    width: 100%;
+        height: calc(100vh - 50px); /* Высота экрана минус высота subnav */
+    overflow: hidden;
+}
+
+.quote img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Масштабировать изображение, сохраняя пропорции */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to top, rgb(8, 200, 248), 20%, rgb(235, 194, 228));
+}

@@ -1,0 +1,221 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e2e6f6;
+    color: #090f00;
+    background-image: url('/i\ \(1\).webp'); /* Путь к вашей картинке */
+    background-size: cover; /* Масштабирует изображение на весь экран */
+    background-position: center; /* Центрирует изображение */
+    background-repeat: no-repeat; /* Запрещает повторение картинки */
+}
+img {
+	width: 15%;
+    height:10%;
+    margin-top:0; 
+    margin: auto;
+    position: absolute; 
+    z-index: 1;
+    display: block;
+}  
+.quote {
+    margin: 60px 0;
+    text-align: center;
+    font-style: italic;
+    color: #e80808;
+}
+
+.quote img {
+    display: block; /* Центрирование изображения по горизонтали */
+    margin: 0px; /* Внешние отступы сверху и снизу */
+    border-radius: 10px; /* Скругление углов изображения */
+    width:150px; /* Задаем ширину изображения */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    margin-top: -100px; 
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    text-align:center;
+    position: Relative; 
+}
+h1 {
+    background: linear-gradient(to top, rgb(15, 9, 200), 20%, cyan);
+    color: rgb(233, 215, 12);
+    text-align: center;
+    margin: 10%;
+    padding: 10;
+    margin: 2%; 
+    display: block;
+    position: Relative; 
+    text-align:center;
+}
+  
+.header {
+    background-color: #6b77e5;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.sub-header {
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #6b77e5;
+}
+.search-container {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+}
+.search-box {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+.search-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #6b77e5;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.search-button:hover {
+    background-color: #5a65d1;
+}
+
+.class-selection {
+    margin: 20px auto;
+    text-align: center;
+}
+.class-selection h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+.class-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.class-buttons button {
+    padding: 10px 15px;
+    background-color: #6b77e5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.class-buttons button:hover {
+    background-color: #5a65d1;
+}
+.subject-buttons {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.subject-buttons button {
+    background-color: #d1d6f9;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+}
+.subject-buttons button:hover {
+    background-color: #b5b9f1;
+}
+.container {
+    max-width:1000px;
+    margin: 80px;
+    padding: 100 20px;
+}
+h3 {
+    color: #6C63FF;
+}
+.book-list {
+    list-style-type: square;
+    padding-left: 10px;
+    font-size: 1em;
+}
+
+.book-list li {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hidden {
+    display: none;
+}
+/* Ссылка для перехода */
+.download-link {
+    text-decoration: none;
+    color: #6C63FF;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.download-link:hover {
+    text-decoration: underline;
+    color: #3e3aa4;
+}
+
+footer {
+    background-color: #6C63FF;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    header p, .book-list li {
+        font-size: 1em;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .book-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .download-link {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+}
+.book-section {
+    display: none; /* По умолчанию секции скрыты */
+    margin-top: 20px;
+}
+
+.book-section.active {
+    display: block; /* Активная секция отображается */
+}

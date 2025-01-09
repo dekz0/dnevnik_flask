@@ -1,0 +1,1 @@
+FLASK_APP=dnevnik_app.py

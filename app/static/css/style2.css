@@ -1,0 +1,102 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e2e6f6;
+    color: #090f00;
+    background-image: url('/i\ \(1\).webp'); /* Путь к вашей картинке */
+    background-size: cover; /* Масштабирует изображение на весь экран */
+    background-position: center; /* Центрирует изображение */
+    background-repeat: no-repeat; /* Запрещает повторение картинки */
+}
+
+h1 {
+    background: linear-gradient(to top, rgb(15, 9, 200), 20%, cyan);
+    color: rgb(233, 215, 12);
+    text-align: center;
+    margin: 10%;
+    padding: 10;
+    margin: 2%; 
+    display: block;
+    position: Relative; 
+    text-align:center;
+}
+img {
+	width: 15%;
+    height:10%;
+    margin-top:0; 
+    margin: auto;
+    position: absolute; 
+    z-index: 1;
+    display: block;
+    
+}
+.header {
+    background-color: #6b77e5;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.sub-header {
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #6b77e5;
+}
+.search-container {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+}
+.search-box {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+.search-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #6b77e5;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.search-button:hover {
+    background-color: #5a65d1;
+}
+.class-selection {
+    margin: 20px auto;
+    text-align: center;
+}
+.class-selection h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+.class-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.class-buttons button {
+    padding: 10px 15px;
+    background-color: #6b77e5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.class-buttons button:hover {
+    background-color: #5a65d1;
+}

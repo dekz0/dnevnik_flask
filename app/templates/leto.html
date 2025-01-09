@@ -1,0 +1,271 @@
+<html>
+<head>
+    <title>ДНЕВНИК ШКОЛЬНИКА - Прочитать летом</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .header img {
+            height: 50px;
+        }
+
+        .header .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .icons i {
+            margin-left: 15px;
+            font-size: 20px;
+        }
+
+        .header .login {
+            font-size: 14px;
+        }
+
+        .nav {
+            background-color: #3366cc;
+            padding: 10px 0;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .sub-nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .sub-nav a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .sub-nav a.red {
+            color: red;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .class-selection {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .class-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .class-button {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #3366cc;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .class-button:hover {
+            background: #e6f0ff;
+        }
+
+        .class-button.active {
+            background: #3366cc;
+            color: white;
+        }
+
+        .reading-content {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .reading-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .book-card {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.2s ease;
+        }
+
+        .book-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-icon {
+            font-size: 24px;
+            color: #3366cc;
+        }
+
+        .book-info {
+            flex-grow: 1;
+        }
+
+        .book-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .book-author {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .class-buttons {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Сохраняем header -->
+    <div class="header">
+        <a href="{{ url_for('index') }}">
+            <img alt="Логотип Кунделик" height="50" src="{{ url_for('static', filename='images/Рисунок2.png') }}"
+                width="100" />
+        </a>
+    
+        <div class="icons">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-globe"></i>
+        </div>
+        <div class="login">
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Вход / регистрация</a>
+            {% else %}
+            <a href="{{ url_for('user', username=current_user.username) }}">{{ current_user.username }}</a> |
+            <a href="{{ url_for('logout') }}">Выйти</a>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Сохраняем навигацию -->
+    <div class="nav">
+        <a href="#">ОБРАЗОВАНИЕ</a>
+        <a href="#">ОБЩЕНИЕ</a>
+        <a href="#">ПРИЛОЖЕНИЯ</a>
+    </div>
+    <div class="sub-nav">
+        <a href="#">Моя школа</a>
+        <a href="#">Мой класс</a>
+        <a href="#">Дневник</a>
+        <a href="#">Расписание</a>
+        <a href="#">Домашнее задание</a>
+        <a href="#">Чаты</a>
+        <a class="red" href="{{ url_for('protected_route', page='library') }}">Онлайн –Библиотека</a>
+        <a class="red" href="{{ url_for('protected_route', page='tutor') }}">Онлайн-репетитор</a>
+        <a class="red" href="{{ url_for('protected_route', page='leto') }}">Прочитать летом</a>
+    </div>
+
+    <div class="main-content">
+        <div class="class-selection">
+            <h1>Для самостоятельного чтения в летний период</h1>
+            <div class="class-buttons">
+                {% for class_num in reading_lists.keys() %}
+                <button class="class-button" data-class="{{ class_num }}">{{ class_num }}</button>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% for class_num, books in reading_lists.items() %}
+        <div id="class-{{ class_num }}-content" class="reading-content">
+            <h2>Список литературы для {{ class_num }} класса</h2>
+            <div class="reading-list">
+                {% for book in books %}
+                <div class="book-card">
+                    <div class="book-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="book-info">
+                        <div class="book-title">{{ book.title }}</div>
+                        <div class="book-author">{{ book.author }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('.class-button');
+            const contents = document.querySelectorAll('.reading-content');
+
+            // Show first class content by default
+            if (contents.length > 0) {
+                contents[0].classList.add('active');
+                buttons[0].classList.add('active');
+            }
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const classNum = button.dataset.class;
+
+                    // Remove active class from all buttons and contents
+                    buttons.forEach(b => b.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked button and corresponding content
+                    button.classList.add('active');
+                    document.getElementById(`class-${classNum}-content`).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
