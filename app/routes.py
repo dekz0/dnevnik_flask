@@ -2,13 +2,11 @@ from urllib.parse import urlsplit
 from flask import abort, flash, redirect, render_template, request, url_for, send_from_directory
 from flask_login import current_user, login_user, logout_user, login_required
 
-import sqlalchemy as sa
 from app import app
 from app.forms import LoginForm
-from app import db
 from app.forms import RegistrationForm
 from app.models import User
-from app.utils import READING_LISTS
+from app.utils import READING_LISTS, add_user, get_grades_for_user, get_user_by_username, read_data
 
 @app.route('/')
 @app.route('/index')
@@ -22,17 +20,22 @@ def login():
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = db.session.scalar(
-            sa.select(User).where(User.username == form.username.data))
-        if user is None or not user.check_password(form.password.data):
+        user_data = get_user_by_username(form.username.data)  # Получаем данные пользователя из JSON
+        if user_data is None or user_data['password'] != form.password.data:  # Замените на хеширование!
             flash('Invalid username or password')
             return redirect(url_for('login'))
+        
+        # Преобразуем словарь в объект User
+        user = User.from_dict(user_data)
+        
+        # Вход пользователя
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('login.html', form=form)
+
 
 @app.route('/logout')
 def logout():
@@ -45,23 +48,32 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
+        data = read_data()
+        if get_user_by_username(form.username.data):
+            flash('Username already exists')
+            return redirect(url_for('register'))
+        user = {
+            'username': form.username.data,
+            'email': form.email.data,
+            'password': form.password.data  # В реальном проекте используйте хеширование!
+        }
+        add_user(user)
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
-    user = db.first_or_404(sa.select(User).where(User.username == username))
-    grades = [
-        {'student': user, 'subject': 'Test grade 4'},
-        {'student': user, 'subject': 'Test post 5'}
-    ]
+    user = get_user_by_username(username)
+    if not user:
+        abort(404, description="User not found")
+    
+    grades = get_grades_for_user(username)
     return render_template('user.html', user=user, grades=grades)
+
+
 
 @app.route('/protected/<page>')
 @login_required

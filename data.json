@@ -1,0 +1,36 @@
+{
+    "users": [
+        {
+            "username": "Marina",
+            "email": "marina@gmail.com",
+            "password": "marina123"
+        },
+        {
+            "username": "Damir",
+            "email": "damir@gmail.com",
+            "password": "damir123"
+        },
+        {
+            "username": "Kamila",
+            "email": "kamila@gmail.com",
+            "password": "damir2003"
+        },
+        {
+            "username": "dekz",
+            "email": "65051@abaiuniversity.edu.kz",
+            "password": "123"
+        }
+    ],
+    "grades": [
+        {
+            "student": "Marina",
+            "subject": "Math",
+            "grade": 4
+        },
+        {
+            "student": "Damir",
+            "subject": "Science",
+            "grade": 5
+        }
+    ]
+}

@@ -3,3 +3,49 @@
 2024-12-19 14:49:30,582 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:28]
 2025-01-05 20:53:18,841 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:28]
 2025-01-09 18:52:49,052 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:28]
+2025-01-09 19:17:17,450 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:28]
+2025-01-09 19:17:22,616 ERROR: Exception on /login [POST] [in /Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/damirs/PycharmProjects/dnevnik/app/routes.py", line 28, in login
+    login_user(user)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask_login/utils.py", line 180, in login_user
+    if not force and not user.is_active:
+AttributeError: 'dict' object has no attribute 'is_active'
+2025-01-09 19:17:38,734 ERROR: Exception on /login [POST] [in /Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/damirs/PycharmProjects/dnevnik/app/routes.py", line 28, in login
+    login_user(user)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask_login/utils.py", line 180, in login_user
+    if not force and not user.is_active:
+AttributeError: 'dict' object has no attribute 'is_active'
+2025-01-09 19:17:55,238 ERROR: Exception on /login [POST] [in /Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/damirs/PycharmProjects/dnevnik/app/routes.py", line 28, in login
+    login_user(user)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask_login/utils.py", line 180, in login_user
+    if not force and not user.is_active:
+AttributeError: 'dict' object has no attribute 'is_active'

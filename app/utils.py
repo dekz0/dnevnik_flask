@@ -1,3 +1,7 @@
+import json
+import os
+
+
 READING_LISTS = {
     5: [
         {"title": "Руслан и Людмила", "author": "А.С. Пушкин"},
@@ -50,3 +54,30 @@ READING_LISTS = {
     ]
 }
 
+
+DATA_FILE = 'data.json'
+
+def read_data():
+    if not os.path.exists(DATA_FILE):
+        return {}
+    with open(DATA_FILE, 'r') as f:
+        return json.load(f)
+
+def write_data(data):
+    with open(DATA_FILE, 'w') as f:
+        json.dump(data, f, indent=4)
+
+def get_user_by_username(username):
+    data = read_data()
+    return next((u for u in data.get('users', []) if u['username'] == username), None)
+
+def add_user(user):
+    data = read_data()
+    if 'users' not in data:
+        data['users'] = []
+    data['users'].append(user)
+    write_data(data)
+
+def get_grades_for_user(username):
+    data = read_data()
+    return [g for g in data.get('grades', []) if g['student'] == username]

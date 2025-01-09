@@ -1,37 +1,275 @@
-{% extends "base.html" %}
+<head>
+    <title>
+        Registration Page
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
 
-{% block content %}
-<h1>Register</h1>
-<form action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.username.label }}<br>
-        {{ form.username(size=32) }}<br>
-        {% for error in form.username.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.email.label }}<br>
-        {{ form.email(size=64) }}<br>
-        {% for error in form.email.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.password.label }}<br>
-        {{ form.password(size=32) }}<br>
-        {% for error in form.password.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.password2.label }}<br>
-        {{ form.password2(size=32) }}<br>
-        {% for error in form.password2.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>{{ form.submit() }}</p>
-</form>
-{% endblock %}
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            max-width: 100px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .info i {
+            font-size: 24px;
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+        .info p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .info a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #4cae4c;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #4cae4c;
+        }
+
+        .form-group .halyk-id {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        .form-group .halyk-id img {
+            max-width: 20px;
+            margin-right: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nav img {
+            max-width: 100px;
+        }
+
+        .nav a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .nav .buttons a {
+            padding: 10px 20px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .nav .buttons a.login {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .nav .buttons a.connect {
+            background-color: #5cb85c;
+            color: #fff;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 10px;
+            }
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav .buttons {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <a href="{{ url_for('index') }}">
+            <img alt="Логотип Кунделик" height="50" src="{{ url_for('static', filename='images/Рисунок2.png') }}"
+                width="100" />
+        </a>
+        <div>
+            <a href="#">
+                О компании
+            </a>
+            <a href="#">
+                Возможности
+            </a>
+            <a href="#">
+                Партнёрам
+            </a>
+            <a href="#">
+                Поддержка
+            </a>
+        </div>
+        <div class="buttons">
+            <a class="login" href="{{ url_for('login') }}">
+                Войти
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>Регистрация в Kundelik.kz</h1>
+        </div>
+        <div class="info">
+            <i class="fas fa-info-circle"></i>
+            <p>
+                Для входа в систему используйте только свою учетную запись.<br>
+                Нажимая кнопку Зарегистрироваться, Вы подтверждаете, что прочли и согласны с
+                <a href="#">пользовательским соглашением</a>.
+            </p>
+        </div>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <label for="username">Имя пользователя</label>
+                {{ form.username(id="username", class="form-control", placeholder="Введите имя пользователя") }}
+                {% for error in form.username.errors %}
+                <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+    
+            <div class="form-group">
+                <label for="email">Email</label>
+                {{ form.email(id="email", class="form-control", placeholder="Введите email") }}
+                {% for error in form.email.errors %}
+                <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+    
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                {{ form.password(id="password", class="form-control", placeholder="Введите пароль") }}
+                {% for error in form.password.errors %}
+                <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+    
+            <div class="form-group">
+                <label for="password2">Подтвердите пароль</label>
+                {{ form.password2(id="password2", class="form-control", placeholder="Повторите пароль") }}
+                {% for error in form.password2.errors %}
+                <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+    
+            <div class="form-group">
+                {{ form.submit(class="submit-button") }}
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

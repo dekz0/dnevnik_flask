@@ -187,7 +187,7 @@
             <i class="fas fa-bell"></i>
             <i class="fas fa-globe"></i>
         </div>
-        <div class="login">
+        <div class="buttons">
             {% if current_user.is_anonymous %}
             <a href="{{ url_for('login') }}">Вход / регистрация</a>
             {% else %}
@@ -210,8 +210,8 @@
         <a href="#">Расписание</a>
         <a href="#">Домашнее задание</a>
         <a href="#">Чаты</a>
-        <a class="red" href="{{ url_for('protected_route', page='library') }}">Онлайн –Библиотека</a>
-        <a class="red" href="{{ url_for('protected_route', page='tutor') }}">Онлайн-репетитор</a>
+        <a class="red" href="{{ url_for('protected_route', page='library') }}">Онлайн–Библиотека</a>
+        <a class="red" href="{{ url_for('protected_route', page='tutor') }}">Онлайн-Репетитор</a>
         <a class="red" href="{{ url_for('protected_route', page='leto') }}">Прочитать летом</a>
     </div>
 
