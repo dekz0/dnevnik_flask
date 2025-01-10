@@ -1,0 +1,117 @@
+2024-12-19 00:21:45,229 INFO: Microblog startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:28]
+2024-12-19 14:21:14,429 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:28]
+2024-12-19 14:49:30,582 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:28]
+2025-01-05 20:53:18,841 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:28]
+2025-01-09 18:52:49,052 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:28]
+2025-01-09 19:17:17,450 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:28]
+2025-01-09 19:17:22,616 ERROR: Exception on /login [POST] [in /Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/damirs/PycharmProjects/dnevnik/app/routes.py", line 28, in login
+    login_user(user)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask_login/utils.py", line 180, in login_user
+    if not force and not user.is_active:
+AttributeError: 'dict' object has no attribute 'is_active'
+2025-01-09 19:17:38,734 ERROR: Exception on /login [POST] [in /Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/damirs/PycharmProjects/dnevnik/app/routes.py", line 28, in login
+    login_user(user)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask_login/utils.py", line 180, in login_user
+    if not force and not user.is_active:
+AttributeError: 'dict' object has no attribute 'is_active'
+2025-01-09 19:17:55,238 ERROR: Exception on /login [POST] [in /Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/damirs/PycharmProjects/dnevnik/app/routes.py", line 28, in login
+    login_user(user)
+  File "/Users/damirs/PycharmProjects/dnevnik/venv/lib/python3.10/site-packages/flask_login/utils.py", line 180, in login_user
+    if not force and not user.is_active:
+AttributeError: 'dict' object has no attribute 'is_active'
+2025-01-10 15:23:21,735 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:24]
+2025-01-10 15:23:42,663 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:24]
+2025-01-10 15:24:25,457 ERROR: Exception on /register [POST] [in /Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/validators.py", line 401, in __call__
+    import email_validator
+ModuleNotFoundError: No module named 'email_validator'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/Users/damirs/PycharmProjects/dnevnik/app/routes.py", line 51, in register
+    if form.validate_on_submit():
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask_wtf/form.py", line 86, in validate_on_submit
+    return self.is_submitted() and self.validate(extra_validators=extra_validators)
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/form.py", line 330, in validate
+    return super().validate(extra)
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/form.py", line 147, in validate
+    if not field.validate(self, extra):
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/fields/core.py", line 234, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/fields/core.py", line 254, in _run_validation_chain
+    validator(form, self)
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/validators.py", line 403, in __call__
+    raise Exception(
+Exception: Install 'email_validator' for email validation support.
+2025-01-10 15:26:23,927 ERROR: Exception on /register [POST] [in /Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/validators.py", line 401, in __call__
+    import email_validator
+ModuleNotFoundError: No module named 'email_validator'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/Users/damirs/PycharmProjects/dnevnik/app/routes.py", line 51, in register
+    if form.validate_on_submit():
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/flask_wtf/form.py", line 86, in validate_on_submit
+    return self.is_submitted() and self.validate(extra_validators=extra_validators)
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/form.py", line 330, in validate
+    return super().validate(extra)
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/form.py", line 147, in validate
+    if not field.validate(self, extra):
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/fields/core.py", line 234, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/fields/core.py", line 254, in _run_validation_chain
+    validator(form, self)
+  File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/validators.py", line 403, in __call__
+    raise Exception(
+Exception: Install 'email_validator' for email validation support.

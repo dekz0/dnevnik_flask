@@ -19,17 +19,32 @@
             "username": "dekz",
             "email": "65051@abaiuniversity.edu.kz",
             "password": "123"
+        },
+        {
+            "username": "Zarina",
+            "email": "dsa@com.com",
+            "password": "123"
+        },
+        {
+            "username": "alpa",
+            "email": "dasdas@com.com",
+            "password": "123"
+        },
+        {
+            "username": "salam",
+            "email": "dsa@csa.com",
+            "password": "123"
         }
     ],
     "grades": [
         {
             "student": "Marina",
-            "subject": "Математика",
+            "subject": "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430",
             "grade": 4
         },
         {
             "student": "Marina",
-            "subject": "Физика",
+            "subject": "\u0424\u0438\u0437\u0438\u043a\u0430",
             "grade": 5
         },
         {
