@@ -12,7 +12,8 @@ from app.utils import READING_LISTS, add_user, get_grades_for_user, get_user_by_
 @app.route('/index')
 @login_required
 def index():
-    return render_template('index.html', title='Home page')
+    grades = get_grades_for_user(current_user.username)
+    return render_template('index.html', title='Home page', grades=grades)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -61,18 +62,6 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
-
-
-@app.route('/user/<username>')
-@login_required
-def user(username):
-    user = get_user_by_username(username)
-    if not user:
-        abort(404, description="User not found")
-    
-    grades = get_grades_for_user(username)
-    return render_template('user.html', user=user, grades=grades)
-
 
 
 @app.route('/protected/<page>')

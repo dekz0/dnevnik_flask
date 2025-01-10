@@ -24,8 +24,13 @@
     "grades": [
         {
             "student": "Marina",
-            "subject": "Math",
+            "subject": "Математика",
             "grade": 4
+        },
+        {
+            "student": "Marina",
+            "subject": "Физика",
+            "grade": 5
         },
         {
             "student": "Damir",
