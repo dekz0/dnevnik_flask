@@ -62,3 +62,4 @@ Traceback (most recent call last):
   File "/Users/damirs/PycharmProjects/dnevnik/testvenv/lib/python3.10/site-packages/wtforms/validators.py", line 403, in __call__
     raise Exception(
 Exception: Install 'email_validator' for email validation support.
+2025-01-10 15:45:24,772 INFO: Dnevnik startup [in /Users/damirs/PycharmProjects/dnevnik/app/__init__.py:24]

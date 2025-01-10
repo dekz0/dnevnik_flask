@@ -4,36 +4,6 @@
             "username": "Marina",
             "email": "marina@gmail.com",
             "password": "marina123"
-        },
-        {
-            "username": "Damir",
-            "email": "damir@gmail.com",
-            "password": "damir123"
-        },
-        {
-            "username": "Kamila",
-            "email": "kamila@gmail.com",
-            "password": "damir2003"
-        },
-        {
-            "username": "dekz",
-            "email": "65051@abaiuniversity.edu.kz",
-            "password": "123"
-        },
-        {
-            "username": "Zarina",
-            "email": "dsa@com.com",
-            "password": "123"
-        },
-        {
-            "username": "alpa",
-            "email": "dasdas@com.com",
-            "password": "123"
-        },
-        {
-            "username": "salam",
-            "email": "dsa@csa.com",
-            "password": "123"
         }
     ],
     "grades": [
@@ -45,11 +15,6 @@
         {
             "student": "Marina",
             "subject": "\u0424\u0438\u0437\u0438\u043a\u0430",
-            "grade": 5
-        },
-        {
-            "student": "Damir",
-            "subject": "Science",
             "grade": 5
         }
     ]
